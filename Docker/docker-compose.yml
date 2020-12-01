@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  node-red:
+    build: 
+      ./node_red
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./node_red/data:/root/.node-red
+    user: root:root
+    devices:
+      - /dev/ttyAMA0:/dev/ttyAMA0
+      - /dev/mem:/dev/mem
+    privileged: true
+
